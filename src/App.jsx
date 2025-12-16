@@ -39,7 +39,7 @@ function App() {
   };
 
   return (
-    <main className="w-full bg-zinc-900">
+    <main className="w-full bg-zinc-900 overflow-x-hidden">
       <HashRouter> 
         <ScrollToSpecificSection />
         

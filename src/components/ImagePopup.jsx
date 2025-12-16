@@ -31,65 +31,53 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
 
     return (
         <div 
-            className='fixed inset-0 z-50 flex items-center justify-center 
-            bg-black bg-opacity-90 p-4'
+            className='fixed inset-0 z-50 flex justify-center 
+            overflow-y-auto bg-black bg-opacity-90 p-4 pt-16 pb-16' 
             onClick={onClose} 
         >
             <div 
-                className='relative max-w-4xl w-full max-h-full bg-gray-900 rounded-lg shadow-2xl'
-                onClick={(e) => e.stopPropagation()} 
+                className='relative max-w-4xl w-full bg-gray-950 rounded-xl shadow-2xl p-6 md:p-10 transform transition-all duration-300' 
+                onClick={(e) => e.stopPropagation()}
             >
                 <button 
                     onClick={onClose} 
-                    className='absolute top-2 right-2 lg:top-4 lg:right-4 
-                    cursor-pointer text-white text-2xl z-10 p-2 rounded-full 
-                    bg-gray-800 hover:bg-red-500 transition'
+                    className='absolute top-4 right-4 text-red-500 text-3xl hover:text-red-400 transition'
+                    aria-label="Close Project Details"
                 >
-                    <i className="fas fa-times"></i>
+                    <i className="fa-solid fa-xmark"></i>
                 </button>
 
-                <div className='flex flex-col lg:flex-row'>
-                    
-                    <div className='flex-1 p-6 flex justify-center items-center 
-                    relative'>
+                <button 
+                    onClick={goToPrev} 
+                    className='absolute left-2 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-3 rounded-full z-10 transition hidden md:block'
+                    aria-label="Previous Project"
+                >
+                    <i className="fa-solid fa-chevron-left"></i>
+                </button>
+                <button 
+                    onClick={goToNext} 
+                    className='absolute right-2 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-3 rounded-full z-10 transition hidden md:block'
+                    aria-label="Next Project"
+                >
+                    <i className="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+                    <div>
                         <img 
-                            src={currentProject.imgUrl} 
-                            alt={currentProject.title} 
-                            className='max-h-[80vh] w-auto object-contain 
-                            rounded'
+                            src={currentProject.popupImg || currentProject.imgUrl} 
+                            alt={`Project ${currentProject.id}`} 
+                            className='w-full h-auto rounded-xl shadow-lg'
                         />
-                        
-                        <button 
-                            onClick={goToPrev} 
-                            className='absolute left-2 top-1/2 transform 
-                            -translate-y-1/2 p-3 rounded-full bg-gray-800 
-                            text-white hover:bg-red-500 transition
-                            cursor-pointer'
-                        >
-                            <i className="fas fa-chevron-left"></i>
-                        </button>
-                        <button 
-                            onClick={goToNext} 
-                            className='absolute right-2 top-1/2 transform 
-                            -translate-y-1/2 p-3 rounded-full bg-gray-800 
-                            text-white hover:bg-red-500 transition
-                            cursor-pointer'
-                        >
-                            <i className="fas fa-chevron-right"></i>
-                        </button>
                     </div>
 
-                    <div className='w-full lg:w-1/3 p-6 text-white border-t 
-                    lg:border-t-0 lg:border-l border-gray-700'>
-                        <h2 className='text-3xl font-bold mb-3 text-red-500'>
+                    <div className='space-y-4'>
+                        <h2 className='text-3xl font-bold text-white mb-2'>
                             Project Details
                         </h2>
-                        <h3 className='text-xl mb-4'>{currentProject.title || `
-                        Project ${currentProject.id}`}</h3>
                         
-                        <p className='text-gray-400 mb-4'>
-                            A brief description of the project goes here. 
-                            This section can be expanded to show more detailed 
+                        <p className='text-gray-400 leading-relaxed text-sm'>
+                            This project description can be expanded to show more detailed 
                             information like client, technology stack, 
                             and objectives.
                         </p>

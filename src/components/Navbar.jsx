@@ -63,7 +63,7 @@ export default function Navbar({ activeHash, setActiveHash }) {
 
     return (
         <nav className='flex flex-row justify-between fixed w-full bg-black
-        py-7 px-16 z-50'>
+        py-7 px-4 lg:px-16 z-50'>
             <h1 className='font-medium text-4xl text-white z-50'>
                 <a href="#home">Craftivo</a>
             </h1>

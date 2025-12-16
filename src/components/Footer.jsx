@@ -30,48 +30,39 @@ export default function Footer() {
     return (
         <footer className='bg-black text-white'>
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12'>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full'> {/* <--- تم إضافة w-full هنا */}
                     
                     {/* About Craftivo */}
                     <div>
-                        <h4 className='text-3xl font-bold mb-4 text-white'>
-                            Craftivo
-                        </h4>
-                        <p className='text-sm text-gray-400 mb-4'>
-                            A108 Adam Street, New York, NY 535022, United States
+                        <h4 className='text-xl font-semibold mb-6'>Craftivo</h4>
+                        <p className='text-sm text-gray-400 mb-6 leading-relaxed'>
+                            Cras ornare arcu dui vivamus magna. Donec rutrum congue leo eget malesuada. 
+                            Nulla quis lorem ut libero malesuada feugiat. 
+                            Quisque velit nisi, pretium ut lacinia in, elementum id enim.
                         </p>
-                        
-                        {/* Social Icons */}
-                        <div className='flex space-x-3 mt-4'>
-                            {socialIcons.map((icon, index) => (
+                        <div className='flex space-x-3'>
+                            {socialIcons.map((icon) => (
                                 <a 
-                                    key={index}
-                                    href={icon.link}
+                                    key={icon.label} 
+                                    href={icon.link} 
                                     aria-label={icon.label}
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className='bg-gray-900 
-                                    flex items-center justify-center text-white 
-                                    hover:text-red-500 hover:shadow-2xl 
-                                    hover:shadow-red-500 duration-500'
+                                    className='w-10 h-10 rounded-full flex items-center justify-center 
+                                    bg-gray-800 text-gray-400 hover:bg-red-500 hover:text-white transition'
                                 >
                                     <i className={icon.icon}></i>
                                 </a>
                             ))}
                         </div>
                     </div>
-
+                    
                     {/* Useful Links */}
                     <div>
                         <h4 className='text-xl font-semibold mb-6'>Useful Links</h4>
                         <ul className='space-y-3'>
-                            {usefulLinks.map((item, index) => (
+                            {usefulLinks.map((link, index) => (
                                 <li key={index}>
-                                    <a 
-                                        href={item.path} 
-                                        className='text-sm text-gray-400 hover:text-red-500 transition duration-300'
-                                    >
-                                        {item.name}
+                                    <a href={link.path} className='text-sm text-gray-400 hover:text-red-500 transition duration-300'>
+                                        {link.name}
                                     </a>
                                 </li>
                             ))}
@@ -84,7 +75,6 @@ export default function Footer() {
                         <ul className='space-y-3'>
                             {ourServices.map((service, index) => (
                                 <li key={index} className='text-sm text-gray-400'>
-                                    <i className="fa-solid fa-chevron-right text-red-500 text-xs mr-2"></i>
                                     {service}
                                 </li>
                             ))}
