@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProfileBg from '../assets/Imgs/profile-bg-5.webp';
 
+
 const TYPING_STRINGS = [
     "UI Designer",
     "React Developer",
@@ -9,6 +10,11 @@ const TYPING_STRINGS = [
     "Express JS Developer",
     "MERN Stack Developer"
 ];
+
+const TYPING_SPEED = 100;
+const DELETING_SPEED = 50;
+const DELAY_BETWEEN_STRINGS = 1500;
+
 
 const socialIcons = [
     { id: 1, name: "fa-brands fa-facebook", link: "#" },
@@ -25,37 +31,40 @@ export default function Landing({ id }) {
     
     useEffect(() => {
         const fullString = TYPING_STRINGS[stringIndex];
-        const typingSpeed = 100;
-        const deletingSpeed = 50;
-        const delayBetweenStrings = 1500;
         let timer;
-
-        if (!isDeleting && charIndex < fullString.length) {
-            timer = setTimeout(() => {
-                setCurrentText(fullString.substring(0, charIndex + 1));
-                setCharIndex(prev => prev + 1);
-            }, typingSpeed);
-        } else if (isDeleting && charIndex > 0) {
-            timer = setTimeout(() => {
+        
+        const handleTyping = () => {
+            if (isDeleting) {
                 setCurrentText(fullString.substring(0, charIndex - 1));
                 setCharIndex(prev => prev - 1);
-            }, deletingSpeed);
-        } else if (!isDeleting && charIndex === fullString.length) {
+            } else {
+                setCurrentText(fullString.substring(0, charIndex + 1));
+                setCharIndex(prev => prev + 1);
+            }
+        };
+
+        if (!isDeleting && charIndex === fullString.length) {
             timer = setTimeout(() => {
                 setIsDeleting(true);
-            }, delayBetweenStrings);
+            }, DELAY_BETWEEN_STRINGS);
         } else if (isDeleting && charIndex === 0) {
             setIsDeleting(false);
-            setStringIndex(prev => (prev + 1) % TYPING_STRINGS.length);
+            setStringIndex((prev) => (prev + 1) % TYPING_STRINGS.length);
+        } else {
+            const speed = isDeleting ? DELETING_SPEED : TYPING_SPEED;
+            timer = setTimeout(handleTyping, speed);
         }
 
         return () => clearTimeout(timer);
+        
     }, [charIndex, isDeleting, stringIndex]);
 
     return (
-        <section id={id || 'home'} className="min-h-screen pt-24 flex items-center justify-center text-white relative">
-            
-            <img 
+        <section 
+            id={id || 'home'} 
+            className="min-h-screen relative flex items-center justify-center text-white"
+        > 
+            <img
                 src={ProfileBg}
                 alt="Profile Background"
                 className='absolute inset-0 h-full w-full object-cover z-10'
@@ -63,7 +72,11 @@ export default function Landing({ id }) {
             
             <div className="absolute inset-0 bg-black opacity-70 z-20"></div>
             
-            <div className="relative z-30 p-4 text-center">
+            <div 
+                className="relative z-30 p-4 text-center"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+            >
                 <h2 className="text-3xl md:text-5xl font-semibold mb-4">
                     Hi, I'm <span className='text-red-500'>John Cooper</span>
                 </h2>
@@ -77,10 +90,11 @@ export default function Landing({ id }) {
                             <a 
                             key={icon.id} 
                             href={icon.link}
-                            target="_blank" 
+                            target="noopener noreferrer" 
                             rel="noopener noreferrer" 
-                            className='mx-3 p-2 text-2xl rounded-full h-8 w-8
-                            hover:bg-red-500 duration-200 text-center'>
+                            className='mx-3 text-2xl hover:shadow-2xl
+                            hover:shadow-red-500 hover:text-red-500 duration-700 
+                            text-center'>
                                 <i className={icon.name}></i>
                             </a>
                         )
@@ -88,5 +102,5 @@ export default function Landing({ id }) {
                 </div>
             </div>
         </section>
-    );
+    )
 }

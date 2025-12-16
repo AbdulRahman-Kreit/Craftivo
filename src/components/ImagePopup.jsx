@@ -31,7 +31,8 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
 
     return (
         <div 
-            className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4'
+            className='fixed inset-0 z-50 flex items-center justify-center 
+            bg-black bg-opacity-90 p-4'
             onClick={onClose} 
         >
             <div 
@@ -40,9 +41,9 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
             >
                 <button 
                     onClick={onClose} 
-                    className='absolute top-4 right-4 text-white text-2xl z-10
-                    p-2 rounded-full bg-gray-800 hover:bg-red-500 
-                    transition'
+                    className='absolute top-2 right-2 lg:top-4 lg:right-4 
+                    cursor-pointer text-white text-2xl z-10 p-2 rounded-full 
+                    bg-gray-800 hover:bg-red-500 transition'
                 >
                     <i className="fas fa-times"></i>
                 </button>
@@ -62,7 +63,8 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
                             onClick={goToPrev} 
                             className='absolute left-2 top-1/2 transform 
                             -translate-y-1/2 p-3 rounded-full bg-gray-800 
-                            text-white hover:bg-red-500 transition'
+                            text-white hover:bg-red-500 transition
+                            cursor-pointer'
                         >
                             <i className="fas fa-chevron-left"></i>
                         </button>
@@ -70,7 +72,8 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
                             onClick={goToNext} 
                             className='absolute right-2 top-1/2 transform 
                             -translate-y-1/2 p-3 rounded-full bg-gray-800 
-                            text-white hover:bg-red-500 transition'
+                            text-white hover:bg-red-500 transition
+                            cursor-pointer'
                         >
                             <i className="fas fa-chevron-right"></i>
                         </button>
@@ -95,7 +98,7 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
                             <span className='font-semibold text-white'>
                                 Category: 
                             </span> 
-                            <span className='text-gray-400'>
+                            <span className='text-gray-400 mx-2'>
                                 {currentProject.category}
                             </span>
                         </p>
@@ -103,7 +106,7 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
                             <span className='font-semibold text-white'>
                                 Tags: 
                             </span> 
-                            <span className='text-gray-400'>
+                            <span className='text-gray-400 mx-2'>
                                 {currentProject.tags.join(', ')}
                             </span>
                         </p>
@@ -111,7 +114,7 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
                             <span className='font-semibold text-white'>
                                 Year: 
                             </span> 
-                            <span className='text-gray-400'>
+                            <span className='text-gray-400 mx-2'>
                                 {currentProject.year}
                             </span>
                         </p>

@@ -16,10 +16,18 @@ export default function Resume({ id }) {
 
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-white mt-12">
-                    <div className="lg:col-span-1">
+                    <div 
+                        className="lg:col-span-1"
+                        data-aos="fade-right"
+                        data-aos-duration="1000"
+                    >
                         <Experience /> 
                     </div>
-                    <div className="lg:col-span-1">
+                    <div 
+                        className="lg:col-span-1"
+                        data-aos="fade-left"
+                        data-aos-duration="1000"
+                    >
                         <Education />
                     </div>
                 </div>

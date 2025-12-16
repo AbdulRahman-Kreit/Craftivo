@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     const usefulLinks = [
-        { name: 'Home', path: '/#home' },
-        { name: 'About us', path: '/#about' },
-        { name: 'Services', path: '/#services' },
+        { name: 'Home', path: '#home' }, 
+        { name: 'About us', path: '#about' },
+        { name: 'Services', path: '#services' },
         { name: 'Terms of service', path: '#' },
         { name: 'Privacy policy', path: '#' },
     ];
@@ -33,21 +32,30 @@ export default function Footer() {
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
                     
-                    {/* Branding and Description */}
+                    {/* About Craftivo */}
                     <div>
-                        <h3 className='font-medium text-4xl text-white mb-4'>
+                        <h4 className='text-3xl font-bold mb-4 text-white'>
                             Craftivo
-                        </h3>
-                        <p className='text-sm text-gray-400 mb-6 max-w-xs'>
-                            Cras fermentum odio eu feugiat lide per naso terra. Justo eget nada terra vide
-                            magna derita valles darta donna mare fermentum lacuslu eu non diam phasellus.
+                        </h4>
+                        <p className='text-sm text-gray-400 mb-4'>
+                            A108 Adam Street, New York, NY 535022, United States
                         </p>
-                        <div className='flex space-x-3'>
-                            {socialIcons.map((item, index) => (
-                                <a key={index} href={item.link} aria-label={item.label}
-                                    className='w-10 h-10 flex items-center justify-center rounded-full border border-gray-600 
-                                    text-gray-400 hover:text-red-500 hover:border-red-500 duration-300'>
-                                    <i className={item.icon}></i>
+                        
+                        {/* Social Icons */}
+                        <div className='flex space-x-3 mt-4'>
+                            {socialIcons.map((icon, index) => (
+                                <a 
+                                    key={index}
+                                    href={icon.link}
+                                    aria-label={icon.label}
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className='bg-gray-900 
+                                    flex items-center justify-center text-white 
+                                    hover:text-red-500 hover:shadow-2xl 
+                                    hover:shadow-red-500 duration-500'
+                                >
+                                    <i className={icon.icon}></i>
                                 </a>
                             ))}
                         </div>
@@ -57,11 +65,14 @@ export default function Footer() {
                     <div>
                         <h4 className='text-xl font-semibold mb-6'>Useful Links</h4>
                         <ul className='space-y-3'>
-                            {usefulLinks.map((item) => (
-                                <li key={item.name} className='text-sm text-gray-400 hover:text-red-500 duration-300'>
-                                    <Link to={item.path}>
+                            {usefulLinks.map((item, index) => (
+                                <li key={index}>
+                                    <a 
+                                        href={item.path} 
+                                        className='text-sm text-gray-400 hover:text-red-500 transition duration-300'
+                                    >
                                         {item.name}
-                                    </Link>
+                                    </a>
                                 </li>
                             ))}
                         </ul>
@@ -72,7 +83,8 @@ export default function Footer() {
                         <h4 className='text-xl font-semibold mb-6'>Our Services</h4>
                         <ul className='space-y-3'>
                             {ourServices.map((service, index) => (
-                                <li key={index} className='text-sm text-gray-400 hover:text-red-500 duration-300'>
+                                <li key={index} className='text-sm text-gray-400'>
+                                    <i className="fa-solid fa-chevron-right text-red-500 text-xs mr-2"></i>
                                     {service}
                                 </li>
                             ))}

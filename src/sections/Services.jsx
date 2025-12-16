@@ -1,15 +1,34 @@
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import Heading from '../components/Heading';
 import ServiceCard, { servicesData } from '../components/ServiceCard'; 
 import ServiceDetails from '../components/ServiceDetails'; 
 
 export default function Services() {
     const [selectedServiceId, setSelectedServiceId] = useState(null);   
+    
+    // Effect to stop scrolling when details in open
+    useEffect(() => {
+        if (selectedServiceId) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [selectedServiceId]);
+
+
     const handleServiceSelect = (id) => {
         setSelectedServiceId(id);
     };
 
     const handleBack = () => {
+        setSelectedServiceId(null);
+    };
+
+    const handleContactClick = () => {
         setSelectedServiceId(null);
     };
 
@@ -22,17 +41,22 @@ export default function Services() {
                 <ServiceDetails 
                     service={selectedService} 
                     onBack={handleBack} 
+                    onContactClick={handleContactClick} 
                 />
             );
         }
 
         return (
             <>
-                <ServiceCard onServiceSelect={handleServiceSelect} />
+                <div data-aos='fade-right'>
+                    <ServiceCard onServiceSelect={handleServiceSelect} />
+                </div>
                 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
                     <div className="bg-linear-to-r from-red-500 to-pink-500 p-8 rounded-lg 
-                        flex flex-col lg:flex-row justify-between items-center text-white">
+                        flex flex-col lg:flex-row justify-between items-center 
+                        text-white"
+                        data-aos='zoom-in' data-aos-delay='500'>
                         
                         <div className='max-w-2xl text-center lg:text-left'>
                             <h3 className="text-2xl font-bold mb-1">

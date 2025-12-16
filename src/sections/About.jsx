@@ -14,10 +14,18 @@ export default function About({ id }) {
             />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 text-white mt-12">
-                    <div className="lg:col-span-1">
+                    <div 
+                        className="lg:col-span-1"
+                        data-aos="fade-right"
+                        data-aos-duration="1000"
+                    >
                         <ProfileCard /> 
                     </div>
-                    <div className="lg:col-span-2 space-y-10">
+                    <div 
+                        className="lg:col-span-2 space-y-10"
+                        data-aos="fade-left"
+                        data-aos-duration="1000"
+                    >
                         <AboutMe /> 
                         <CoreSkills /> 
                     </div>

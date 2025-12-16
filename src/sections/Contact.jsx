@@ -98,7 +98,11 @@ export default function Contact() {
                 description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi."
             />
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div 
+                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+                data-aos='fade-up'
+                data-aos-duration='1000'
+            >
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 text-white mt-12">
                     

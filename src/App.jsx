@@ -1,5 +1,5 @@
-import { useEffect } from "react"
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { useEffect, useState } from "react" 
+import { HashRouter, useLocation } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
 import Footer from './components/Footer'
@@ -11,6 +11,7 @@ import Services from './sections/Services'
 import Portfolio from './sections/Portfolio'
 import Contact from './sections/Contact'
 
+// To Navigate to the specific section
 function ScrollToSpecificSection() {
   const location = useLocation();
 
@@ -25,39 +26,38 @@ function ScrollToSpecificSection() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
-  }, [location]);
+  }, [location]); 
   
   return null;
 }
 
-function AllSections() {
-  return (
-    <>
-      <Landing />
-      <About />
-      <Resume />
-      <Services />
-      <Portfolio />
-      <Contact />
-      <ToTopButton />
-    </>
-  )
-}
-
 function App() {
-  
+  const [activeHash, setActiveHash] = useState('#home'); 
+
+  const handleSetActiveHash = (hash) => {
+    setActiveHash(hash);
+  };
+
   return (
     <main className="w-full bg-zinc-900">
-      <Router>
+      <HashRouter> 
         <ScrollToSpecificSection />
-        <Navbar />
         
-        <Routes>
-          <Route path="/" element={<AllSections />} />
-        </Routes>
+        <Navbar 
+          activeHash={activeHash} 
+          setActiveHash={handleSetActiveHash} 
+        />
+        
+        <Landing />
+        <About />
+        <Resume />
+        <Services />
+        <Portfolio />
+        <Contact />
         
         <Footer />
-      </Router>
+        <ToTopButton setActiveHash={handleSetActiveHash} />
+      </HashRouter>
     </main>
   )
 }

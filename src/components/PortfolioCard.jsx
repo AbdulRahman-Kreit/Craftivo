@@ -1,5 +1,3 @@
-// PortfolioCard.jsx
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -25,19 +23,23 @@ export default function PortfolioCard({ project, onOpenPopup }) {
                 </div>
 
                 <div className='flex space-x-4'>
-                    <Link to={link} className='p-3 rounded-full bg-white text-red-500 hover:bg-gray-100 transition'>
+                    <Link to={link} className='p-3 rounded-full bg-white 
+                    text-red-500 hover:bg-gray-100 transition'>
                         <i className="fas fa-link"></i>
                     </Link>
                     <button 
                         onClick={() => onOpenPopup(id)} 
-                        className='p-3 rounded-full bg-white text-red-500 hover:bg-gray-100 transition'
+                        className='p-3 rounded-full bg-white 
+                        text-red-500 hover:bg-gray-100 transition
+                        cursor-pointer'
                     >
                         <i className="fas fa-search-plus"></i>
                     </button>
                 </div>
             </div>
 
-            <div className='absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4 
+            <div className='absolute bottom-0 left-0 right-0 
+            bg-black bg-opacity-70 p-4 
                 flex justify-between items-center text-white'>
                 
                 <div className='text-xs'>

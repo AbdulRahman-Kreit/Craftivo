@@ -1,11 +1,8 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-
-export default function Navbar() {
-    const location = useLocation();
+export default function Navbar({ activeHash, setActiveHash }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false); 
-    const [activeHash, setActiveHash] = useState(location.hash || '#home'); 
 
     const navItems = [
         { name: 'Home', path: '/', hash: '#home' }, 
@@ -15,7 +12,24 @@ export default function Navbar() {
         { name: 'Portfolio', path: '/#portfolio', hash: '#portfolio' },
         { name: 'Contact', path: '/#contact', hash: '#contact' },
     ];
-
+    
+    const renderLink = (item) => {
+        const isActive = activeHash === item.hash;
+        
+        return (
+            <a 
+                href={item.hash} 
+                onClick={() => {
+                    setActiveHash(item.hash);
+                    setIsMenuOpen(false);
+                }}
+                className={`transition duration-300 ${isActive ? 'text-red-500' : 'text-white hover:text-red-500'}`}
+            >
+                {item.name}
+            </a>
+        );
+    };
+    
     useEffect(() => {
         const targets = navItems
             .map(item => document.getElementById(item.hash.substring(1)))
@@ -35,46 +49,28 @@ export default function Navbar() {
             });
         }, options);
 
-        targets.forEach(target => observer.observe(target));
+        targets.forEach(target => {
+            observer.observe(target);
+        });
 
-        if (!location.hash) {
-            setActiveHash('#home');
-        }
+        return () => {
+            targets.forEach(target => {
+                observer.unobserve(target);
+            });
+        };
+    }, [navItems, setActiveHash]);
 
-        return () => observer.disconnect();
-    }, [navItems, location.hash]); 
-
-    const renderLink = useCallback((item) => {
-        const isActiveFinal = item.hash === activeHash;
-
-        return (
-            <Link 
-                to={item.path}
-                onClick={() => {
-                    setActiveHash(item.hash); 
-                    setIsMenuOpen(false);
-                }} 
-                className={
-                    isActiveFinal 
-                        ? 'text-red-500' 
-                        : 'text-white hover:text-red-500 transition duration-200'
-                }
-            >
-                {item.name}
-            </Link>
-        );
-    }, [activeHash]); 
 
     return (
         <nav className='flex flex-row justify-between fixed w-full bg-black
         py-7 px-16 z-50'>
             <h1 className='font-medium text-4xl text-white z-50'>
-                <Link to="/">Craftivo</Link>
+                <a href="#home">Craftivo</a>
             </h1>
 
             <button 
-                className='lg:hidden text-white text-3xl z-50 duration-200
-                hover:text-red-500 focus:outline-none cursor-pointer' 
+                className='lg:hidden text-white text-3xl z-50 duration-300
+                hover:text-red-500 cursor-pointer' 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
                 {isMenuOpen ? <i className="fa-solid fa-xmark"></i> : 
