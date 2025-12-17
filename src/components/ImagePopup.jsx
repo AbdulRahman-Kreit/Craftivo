@@ -41,7 +41,8 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
             >
                 <button 
                     onClick={onClose} 
-                    className='absolute top-4 right-4 text-red-500 text-3xl hover:text-red-400 transition'
+                    className='absolute top-4 right-4 text-red-500 text-3xl 
+                    hover:text-red-400 transition cursor-pointer'
                     aria-label="Close Project Details"
                 >
                     <i className="fa-solid fa-xmark"></i>
@@ -49,14 +50,18 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
 
                 <button 
                     onClick={goToPrev} 
-                    className='absolute left-2 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-3 rounded-full z-10 transition hidden md:block'
+                    className='absolute left-2 top-1/2 -translate-y-1/2 
+                    text-white bg-black/50 hover:bg-gray-600 p-3 
+                    rounded-full z-10 duration-500 cursor-pointer'
                     aria-label="Previous Project"
                 >
                     <i className="fa-solid fa-chevron-left"></i>
                 </button>
                 <button 
                     onClick={goToNext} 
-                    className='absolute right-2 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-3 rounded-full z-10 transition hidden md:block'
+                    className='absolute right-2 top-1/2 -translate-y-1/2 
+                    text-white bg-black/50 hover:bg-gray-600 p-3 
+                    rounded-full z-10 duration-500 cursor-pointer'
                     aria-label="Next Project"
                 >
                     <i className="fa-solid fa-chevron-right"></i>
