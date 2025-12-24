@@ -10,7 +10,6 @@ export default function ToTopButton({ setActiveHash }) {
     });
     
     if (setActiveHash) {
-        // تأخير بسيط للسماح بانتهاء التمرير السلس قبل تحديث الهاش
         setTimeout(() => {
             setActiveHash('#home');
         }, 100); 

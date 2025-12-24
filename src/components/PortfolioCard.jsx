@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default function PortfolioCard({ project, onOpenPopup }) {
     const { id, tags, year, imgUrl, link } = project;
     
     return (
-        <div className='relative overflow-hidden group rounded-lg shadow-xl bg-gray-900'>
+        <div className='relative overflow-hidden group rounded-lg shadow-xl 
+        bg-gray-900'>
 
             <img 
                 src={imgUrl} 
                 alt={`Project ${id}`} 
-                className='w-full h-full object-cover transition duration-500 group-hover:scale-105'
+                className='w-full h-full object-cover transition duration-500 
+                group-hover:scale-105'
             />
             
             <div className='absolute inset-0 bg-red-500/80 flex flex-col justify-center items-center 
@@ -23,10 +24,10 @@ export default function PortfolioCard({ project, onOpenPopup }) {
                 </div>
 
                 <div className='flex space-x-4'>
-                    <Link to={link} className='p-3 rounded-full bg-white 
+                    <a href={link} className='p-3 rounded-full bg-white 
                     text-red-500 hover:bg-gray-100 transition'>
                         <i className="fas fa-link"></i>
-                    </Link>
+                    </a>
                     <button 
                         onClick={() => onOpenPopup(id)} 
                         className='p-3 rounded-full bg-white 

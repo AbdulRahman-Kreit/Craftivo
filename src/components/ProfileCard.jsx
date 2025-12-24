@@ -76,7 +76,8 @@ export default function ProfileCard() {
                     Download CV
                 </button>
                 
-                <button className={`${buttonBaseClasses} border border-gray-700 hover:border-red-500 text-gray-300 hover:text-red-500`}>
+                <button className={`${buttonBaseClasses} border border-gray-700 
+                hover:border-red-500 text-gray-300 hover:text-red-500`}>
                     <a href="#contact" className="w-full h-full flex items-center justify-center space-x-2">
                         <i className="fa-regular fa-envelope"></i>
                         <span>Contact</span>

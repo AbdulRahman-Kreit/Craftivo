@@ -70,7 +70,7 @@ export default function ImagePopup({ projects, currentIndex, setCurrentImageInde
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
                     <div>
                         <img 
-                            src={currentProject.popupImg || currentProject.imgUrl} 
+                            src={currentProject.imgUrl} 
                             alt={`Project ${currentProject.id}`} 
                             className='w-full h-auto rounded-xl shadow-lg'
                         />

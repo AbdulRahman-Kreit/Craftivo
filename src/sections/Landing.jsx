@@ -90,8 +90,6 @@ export default function Landing({ id }) {
                             <a 
                             key={icon.id} 
                             href={icon.link}
-                            target="noopener noreferrer" 
-                            rel="noopener noreferrer" 
                             className='mx-3 text-2xl hover:shadow-2xl
                             hover:shadow-red-500 hover:text-red-500 duration-700 
                             text-center'>

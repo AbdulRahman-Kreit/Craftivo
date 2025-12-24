@@ -23,8 +23,8 @@ function ProgressBar({ name, percentage }) {
             </div>
             <div className="w-full bg-gray-800 rounded-full h-2.5">
                 <div 
-                    className="bg-linear-to-r from-red-600 to-red-300 h-2.5 rounded-full transition-all 
-                    duration-2000 ease-out" 
+                    className="bg-linear-to-r from-red-600 to-red-300 h-2.5 
+                    rounded-full transition-all duration-3000 ease-out" 
                     style={{ width: `${isVisibleWidth}%` }} 
                 ></div>
             </div>
